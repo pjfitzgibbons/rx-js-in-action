@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/scripts/baseStyle.css">
+    <script src="/scripts/rxjs.umd.js"></script>
+</head>
+<body>
+    <h1>Time Stream</h1>
+
+    <p id="target">Target</p>
+    MouseX = <span id="mouseX"></span>
+    <br>
+    MouseY = <span id="mouseY"></span>
+
+    <script>
+        const Rx = rxjs
+        const {Observable, from, fromEvent, map, pipe, tap} = rxjs
+        from([1, 2, 3]).subscribe(console.log)
+
+        const elX = document.getElementById('mouseX')
+        const elY = document.getElementById('mouseY')
+        const reportMouse = ({clientX, clientY}) => {
+            elX.innerText = clientX
+            elY.innerText = clientY
+        }
+
+        const mouseEvt$ = fromEvent(window.document, 'mousemove').pipe(
+        )
+        var mouseSub = mouseEvt$.subscribe(reportMouse)
+    </script>
+</body>
+</html>
